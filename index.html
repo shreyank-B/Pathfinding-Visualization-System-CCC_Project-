@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>City Route Planner — Dijkstra's Algorithm</title>
+  <meta name="description" content="Find the shortest path between Indian cities using Dijkstra's Greedy Algorithm. CCC University Project."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-icon">🗺️</div>
+      <div>
+        <h1>City Route Planner</h1>
+        <p class="header-sub">Dijkstra's Shortest Path Algorithm</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge green">Greedy Algorithm</span>
+      <span class="badge blue">Priority Queue</span>
+      <span class="badge purple">C++ &amp; Python</span>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Controls Card -->
+      <div class="card">
+        <h2 class="card-title">Find Shortest Route</h2>
+
+        <div class="form-group">
+          <label for="source">🚀 Source City</label>
+          <select id="source"></select>
+        </div>
+
+        <div class="swap-row">
+          <button class="swap-btn" id="swapBtn" title="Swap cities">⇅ Swap</button>
+        </div>
+
+        <div class="form-group">
+          <label for="destination">🏁 Destination City</label>
+          <select id="destination"></select>
+        </div>
+
+        <button class="find-btn" id="findBtn">
+          <span>Find Shortest Path</span>
+          <span>→</span>
+        </button>
+        <button class="clear-btn" id="clearBtn">✕ Clear</button>
+      </div>
+
+      <!-- Result Card -->
+      <div class="card result-card" id="resultCard" style="display:none">
+        <h2 class="card-title">📊 Result</h2>
+        <div class="result-dist-box">
+          <div class="dist-label">Total Distance</div>
+          <div class="dist-value" id="distValue">0 km</div>
+        </div>
+        <div class="path-visual" id="pathVisual"></div>
+        <div class="steps-title">Route Breakdown</div>
+        <div class="steps-list" id="stepsList"></div>
+      </div>
+
+      <!-- How It Works -->
+      <div class="card">
+        <h2 class="card-title">⚙️ How Dijkstra Works</h2>
+        <div class="algo-steps">
+          <div class="algo-step"><span class="snum">1</span><span>Set distance to source = 0, all others = ∞</span></div>
+          <div class="algo-step"><span class="snum">2</span><span>Pick the unvisited city with smallest distance</span></div>
+          <div class="algo-step"><span class="snum">3</span><span>Update (relax) distances to its neighbors</span></div>
+          <div class="algo-step"><span class="snum">4</span><span>Repeat until destination is reached</span></div>
+        </div>
+        <div class="complexity-box">
+          <span class="comp-label">Time Complexity</span>
+          <span class="comp-val">O((V + E) log V)</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAP AREA -->
+    <main class="map-area">
+      <div class="map-header">
+        <span class="map-title">🌏 India City Network</span>
+        <div class="legend">
+          <span class="leg-item"><span class="leg-dot blue"></span> City</span>
+          <span class="leg-item"><span class="leg-dot orange"></span> Shortest Path</span>
+          <span class="leg-item"><span class="leg-dot cyan"></span> Explored</span>
+        </div>
+      </div>
+      <div class="svg-wrap">
+        <svg id="graphSVG" viewBox="0 0 760 600" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="strongGlow">
+              <feGaussianBlur stdDeviation="7" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b"/>
+            </marker>
+          </defs>
+          <!-- Grid background -->
+          <rect width="760" height="600" fill="url(#grid)" opacity="0.4"/>
+          <g id="edgesGroup"></g>
+          <g id="edgeLabelsGroup"></g>
+          <g id="nodesGroup"></g>
+          <g id="nodeLabelsGroup"></g>
+        </svg>
+      </div>
+      <!-- Status bar -->
+      <div class="status-bar" id="statusBar">
+        <span class="status-dot idle"></span>
+        <span id="statusText">Select source and destination cities to find the shortest path.</span>
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

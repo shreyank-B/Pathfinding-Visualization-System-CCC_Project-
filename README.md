@@ -1,19 +1,41 @@
-# Pathfinding-Visualization-System-CCC_Project-
- A system that finds the shortest route in milliseconds, even if there are many paths. Visualization: Instead of just seeing numbers in a terminal, we got a live, animated map that shows exactly how the algorithm "thinks" as it explores paths. Real-world Utility: A working model of how real GPS systems like Google Maps function.
+# 🗺️ City Route Planner — Dijkstra's Algorithm Visualizer
 
+A professional pathfinding application built for university evaluation (CCC). This project demonstrates the implementation and visualization of **Dijkstra's Shortest Path Algorithm** (a Greedy approach) to find the most efficient routes between major Indian cities.
 
- 
-Brief Explanation of the Project
-1. What we did: We built a Pathfinding Visualization System. We took 10 major Indian cities and connected them with roads of specific distances (creating a Weighted Graph). We then wrote the Dijkstra Algorithm from scratch in both Python and C++. This algorithm is a "Greedy" algorithm because it always makes the best local choice at each step to reach a global optimum (the shortest path).
+## 🚀 Overview
+The **City Route Planner** is an interactive web-based tool that calculates the shortest distance between 10 major cities in India. It provides a visual representation of the city network (graph) and animates the algorithm's progress as it "relaxes" edges to find the optimal path.
 
-2. What we used:
+## 🧠 Algorithm: Dijkstra's (Greedy)
+We implemented **Dijkstra's Algorithm** using a **Priority Queue (Min-Heap)**. 
+- **Greedy Strategy**: At every step, the algorithm selects the unvisited city with the smallest known distance from the source.
+- **Complexity**: $O((V + E) \log V)$, where $V$ is the number of cities and $E$ is the number of roads.
+- **Relatability**: This is the foundational algorithm used by GPS systems and Google Maps for routing.
 
-Algorithms: Dijkstra's Shortest Path with a Min-Heap (Priority Queue).
-Logic: C++ and Python for the heavy lifting.
-UI/UX: HTML and CSS to create a premium "Dark Mode" dashboard.
-Graphics: SVG (Scalable Vector Graphics) to draw the cities and roads so they look crisp and can be animated.
-3. What we got (Results):
+## 🛠️ Technology Stack
+- **Frontend**: HTML5, Vanilla CSS3 (Custom Dark Theme), JavaScript (SVG for Graph Rendering).
+- **Backend**: Python (Flask) for the web server and algorithm logic.
+- **Logic Version**: A standalone **C++** implementation (`dijkstra.cpp`) is included for academic explanation.
+- **Data**: A weighted graph representing real-world distances between cities like Mumbai, Delhi, Bangalore, etc.
 
-Efficiency: A system that finds the shortest route in milliseconds, even if there are many paths.
-Visualization: Instead of just seeing numbers in a terminal, we got a live, animated map that shows exactly how the algorithm "thinks" as it explores paths.
-Real-world Utility: A working model of how real GPS systems like Google Maps function.
+## ✨ Key Features
+- **Interactive SVG Map**: Click cities on the graph to set source and destination.
+- **Real-time Animation**: Neon path highlighting and step-by-step "visited" node indicators.
+- **Route Breakdown**: A detailed sidebar showing the distance for each segment of the journey.
+- **Educational Panel**: Built-in "How it Works" section for easy presentation to professors.
+
+## 📊 Results
+The project successfully:
+1.  **Calculates** the absolute shortest path between any two cities in the network.
+2.  **Visualizes** complex graph data in a user-friendly way.
+3.  **Proves** the efficiency of Greedy algorithms in solving real-world optimization problems.
+
+## 📂 Project Structure
+- `app.py`: Flask server and Python Dijkstra implementation.
+- `dijkstra.cpp`: Standalone C++ code for CLI-based algorithm demo.
+- `index.html / style.css / script.js`: The animated UI frontend.
+- `README.md`: Project documentation.
+
+---
+**Author**: [Your Team Name]  
+**Course**: 2nd Year University Project (CCC)  
+**Date**: April 30th, 2026
